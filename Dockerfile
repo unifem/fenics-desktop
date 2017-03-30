@@ -13,6 +13,8 @@ LABEL maintainer "Xiangmin Jiao <xmjiao@gmail.com>"
 USER root
 WORKDIR /tmp
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Install some required system tools and packages for X Windows
 # We install firefox and make --no-remote to be default
 # Install FreeCAD, Gmsh, python-vtk

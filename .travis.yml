@@ -1,0 +1,7 @@
+services:
+  - docker
+
+script:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_USERPASS"
+  - docker build --tag multiphysics/fenics-desktop . && docker push multiphysics/fenics-desktop
+  - docker images
