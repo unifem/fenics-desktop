@@ -1,5 +1,5 @@
 # Builds a Docker image for FEniCS in a Desktop environment
-# with Ubuntu, LXDE, and Python 2.
+# with Ubuntu, LXDE, and Python 3.
 #
 # The built image can be found at:
 #   https://hub.docker.com/r/multiphysics/fenics-desktop
@@ -7,7 +7,7 @@
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
 
-FROM quay.io/fenicsproject/stable
+FROM multiphysics/fenics-jupyter
 LABEL maintainer "Xiangmin Jiao <xmjiao@gmail.com>"
 
 USER root
@@ -17,7 +17,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install some required system tools and packages for X Windows
 # We install firefox and make --no-remote to be default
-# Install FreeCAD, Gmsh, python-vtk
+# Install FreeCAD and Gmsh
 RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
     apt-get update && \
     apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
@@ -44,7 +44,6 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
 	xpdf \
 	\
 	freecad \
-        python-vtk \
         gmsh && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     sed -i 's/MOZ_APP_NAME "\$@"/MOZ_APP_NAME --no-remote "\$@"/' /usr/bin/firefox && \
