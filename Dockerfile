@@ -61,27 +61,11 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
 ########################################################
 
 ADD image /
-ADD conf/ /home/fenics/.config
+ADD conf/ $DOCKER_HOME/.config
 
-ENV DOCKER_USER=multiphysics
-ENV DOCKER_GROUP=$DOCKER_USER \
-    DOCKER_HOME=/home/$DOCKER_USER \
-    HOME=/home/$DOCKER_USER
-
-# Change the default timezone to America/New_York
-# Set up user so that we do not run as root
-RUN echo "America/New_York" > /etc/timezone && \
-    ln -s -f /usr/share/zoneinfo/America/New_York /etc/localtime && \
-    mv /home/fenics /home/$DOCKER_USER && \
-    useradd -m -s /bin/bash -G sudo,docker_env $DOCKER_USER && \
-    echo "$DOCKER_USER:docker" | chpasswd && \
-    echo "$DOCKER_USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    mkdir $DOCKER_HOME/.vnc && \
+RUN mkdir $DOCKER_HOME/.vnc && \
     mkdir $DOCKER_HOME/.log && \
     chown -R $DOCKER_USER:$DOCKER_GROUP $DOCKER_HOME
 
 WORKDIR $DOCKER_HOME
 USER root
-
-ENTRYPOINT ["/sbin/my_init","--quiet","--","/sbin/setuser","multiphysics","/bin/bash","-l","-c"]
-CMD ["/bin/bash","-i"]
