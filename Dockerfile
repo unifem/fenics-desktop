@@ -1,5 +1,5 @@
 # Builds a Docker image for FEniCS in a Desktop environment
-# with Ubuntu, LXDE, and Python 2.
+# with Ubuntu, LXDE, and Python 3.
 #
 # The built image can be found at:
 #   https://hub.docker.com/r/multiphysics/fenics-desktop
