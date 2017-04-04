@@ -116,7 +116,7 @@ if __name__ == "__main__":
    # Generate a container ID and find an unused port
    container = id_generator()
    port_vnc = str(find_free_port(6080, 50))
-   port_jn = str(find_free_port(8088, 50))
+   port_jn = str(find_free_port(8888, 50))
 
    print("Starting up docker image...")
    # Start the docker image and pipe the stderr
@@ -124,7 +124,7 @@ if __name__ == "__main__":
                          "-w", "/home/" + user + "/shared", 
                          "-v", pwd + ":/home/" + user + "/shared", 
                          "-p", "127.0.0.1:" + port_vnc + ":6080",
-                         "-p", "127.0.0.1:" + port_jn + ":8088",
+                         "-p", "127.0.0.1:" + port_jn + ":8888",
                          user + "/" + image,
                          "startvnc.sh", get_screen_resolution()], 
                          stdout=subprocess.PIPE, universal_newlines=True)
@@ -143,7 +143,7 @@ if __name__ == "__main__":
             wait_net_service(int(port_vnc))
             webbrowser.open(url[ind:-1])
          elif stdout_line.find("http://0.0.0.0:") >= 0:
-            sys.stdout.write(stdout_line.replace("0.0.0.0:8088/", 
+            sys.stdout.write(stdout_line.replace("0.0.0.0:8888/", 
                                                  'localhost:' + port_jn + "/"))
          else:
             sys.stdout.write(stdout_line)

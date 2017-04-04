@@ -36,7 +36,7 @@ echo "Open your web browser with URL:"
 echo "    http://localhost:6080/vnc.html?autoconnect=1&autoscale=0&password=$VNCPASS"
 
 # Start up Jupyter Notebook if available
-which -s jupyter-notebook && jupyter-notebook --ip=0.0.0.0 $HOME/shared
+which jupyter-notebook > /dev/null && jupyter-notebook --ip=0.0.0.0 $HOME/shared
 
 # startup novnc
 /usr/local/noVNC/utils/launch.sh --listen 6080 > $DOCKER_HOME/.log/novnc.log 2>&1
