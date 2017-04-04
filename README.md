@@ -2,7 +2,8 @@
 
 This Docker image is for learning and trying FEniCS for solving numerical PDEs.
 
-[![Build Status](https://travis-ci.org/MultiPhysicsLab/FEniCS-desktop.svg?branch=master)](https://travis-ci.org/MultiPhysicsLab/FEniCS-desktop) [![Docker Repository on Quay](https://quay.io/repository/multiphysics/fenics-desktop/status "Docker Repository on Quay")](https://quay.io/repository/multiphysics/fenics-desktop)
+[![Build Status](https://travis-ci.org/MultiPhysicsLab/FEniCS-desktop.svg?branch=travis)](https://travis-ci.org/MultiPhysicsLab/FEniCS-desktop)   [![Docker Image](https://images.microbadger.com/badges/image/multiphysics/fenics-desktop.svg)](https://microbadger.com/images/multiphysics/fenics-desktop)
+
 
 ### About [FEniCS](https://fenicsproject.org/)
 
