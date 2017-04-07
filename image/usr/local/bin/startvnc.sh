@@ -6,13 +6,10 @@
 
 # Copyright Xiangmin Jiao 2017. All rights reserved.
 
-# Set resolution based on input argument. Use 1440x900 default
-SIZE="${1:-1440x900}"
-
 # Start up xdummy with the given size
-SIZE1=`echo $SIZE | sed "s/x/ /"`
-grep -s -q $SIZE .config/xorg.conf && \
-sed -i "s/Virtual 1440 900/Virtual $SIZE1/" $DOCKER_HOME/.config/xorg.conf
+SIZE=`echo $RESOLUT | sed -e "s/x/ /"`
+grep -s -q $RESOLUT $DOCKER_HOME/.config/xorg.conf && \
+sed -i -e "s/Virtual 1440 900/Virtual $SIZE/" $DOCKER_HOME/.config/xorg.conf
 
 Xorg -noreset -logfile $DOCKER_HOME/.log/Xorg.log -config $DOCKER_HOME/.config/xorg.conf :0 2> $DOCKER_HOME/.log/Xorg_err.log &
 sleep 0.1
@@ -34,9 +31,6 @@ x11vnc -display :0 -xkb -forever -shared  -usepw >> $DOCKER_HOME/.log/x11vnc.log
 
 echo "Open your web browser with URL:"
 echo "    http://localhost:6080/vnc.html?autoconnect=1&autoscale=0&password=$VNCPASS"
-
-# Start up Jupyter Notebook if available
-which jupyter-notebook > /dev/null && jupyter-notebook --ip=0.0.0.0 $HOME/shared
 
 # startup novnc
 /usr/local/noVNC/utils/launch.sh --listen 6080 > $DOCKER_HOME/.log/novnc.log 2>&1
