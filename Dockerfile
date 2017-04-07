@@ -40,6 +40,7 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
         libgl1-mesa-dri \
         x11vnc \
         \
+        meld \
         firefox \
 	xpdf \
 	\
