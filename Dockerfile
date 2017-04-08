@@ -18,13 +18,15 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some required system tools and packages for X Windows
 # We install firefox and make --no-remote to be default
 # Install FreeCAD and Gmsh
-RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+    add-apt-repository ppa:freecad-maintainers/freecad-stable && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         openssh-server \
         net-tools \
         python-pip \
         python-dev \
+        spyder3 \
         g++ \
         \
         xserver-xorg-video-dummy \
@@ -50,9 +52,7 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
     sed -i 's/MOZ_APP_NAME "\$@"/MOZ_APP_NAME --no-remote "\$@"/' /usr/bin/firefox && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN pip3 install -U spyder && \
-	\
-    pip2 install -U pip \
+RUN pip2 install -U pip \
         setuptools && \
 	\
     pip2 install -U https://github.com/novnc/websockify/archive/master.tar.gz && \
