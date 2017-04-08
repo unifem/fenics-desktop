@@ -18,7 +18,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some required system tools and packages for X Windows
 # We install firefox and make --no-remote to be default
 # Install FreeCAD and Gmsh
-RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+    add-apt-repository ppa:freecad-maintainers/freecad-stable && \
     apt-get update && \
     apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
     apt-get install -y --no-install-recommends \
@@ -26,7 +27,7 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
         net-tools \
         python-pip \
         python-dev \
-        spyder \
+        spyder3 \
         g++ \
         \
         xserver-xorg-video-dummy \
@@ -42,6 +43,7 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
         x11vnc \
         \
         meld \
+        emacs24 \
         firefox \
 	xpdf \
 	\
