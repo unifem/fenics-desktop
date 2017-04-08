@@ -2,12 +2,12 @@
 # with Ubuntu, LXDE, and Python 3.
 #
 # The built image can be found at:
-#   https://hub.docker.com/r/multiphysics/fenics-desktop
+#   https://hub.docker.com/r/unifem/fenics-desktop
 #
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
 
-FROM multiphysics/fenics-jupyter
+FROM unifem/fenics-jupyter
 LABEL maintainer "Xiangmin Jiao <xmjiao@gmail.com>"
 
 USER root
@@ -48,7 +48,8 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted 
 	xpdf \
 	\
 	freecad \
-        gmsh && \
+        gmsh \
+        paraview && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     sed -i 's/MOZ_APP_NAME "\$@"/MOZ_APP_NAME --no-remote "\$@"/' /usr/bin/firefox && \
     pip2 install -U pip \
