@@ -141,9 +141,6 @@ if __name__ == "__main__":
 
             wait_net_service(int(port_vnc))
             webbrowser.open(url[ind:-1])
-         elif stdout_line.find("http://0.0.0.0:") >= 0:
-            sys.stdout.write(stdout_line.replace("0.0.0.0:8888/", 
-                                                 'localhost:' + port_jn + "/"))
          else:
             sys.stdout.write(stdout_line)
 
@@ -151,5 +148,7 @@ if __name__ == "__main__":
       p.wait()
    except KeyboardInterrupt:
        print('*** Stopping the server.')
+       print('*** To clean up dangling images and unused containers, use command')
+       print('***         docker system prune')
    except OSError:
        pass
