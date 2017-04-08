@@ -26,6 +26,7 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
         net-tools \
         python-pip \
         python-dev \
+        spyder \
         g++ \
         \
         xserver-xorg-video-dummy \
