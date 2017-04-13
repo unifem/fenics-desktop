@@ -68,8 +68,8 @@ RUN pip2 install -U pip \
 ADD image /
 ADD conf/ $DOCKER_HOME/.config
 
-RUN mkdir $DOCKER_HOME/.vnc && \
-    mkdir $DOCKER_HOME/.log && \
+RUN mkdir -p $DOCKER_HOME/.vnc && \
+    mkdir -p $DOCKER_HOME/.log && touch $DOCKER_HOME/.log/vnc.log && \
     chown -R $DOCKER_USER:$DOCKER_GROUP $DOCKER_HOME
 
 WORKDIR $DOCKER_HOME
