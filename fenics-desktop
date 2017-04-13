@@ -144,7 +144,7 @@ if __name__ == "__main__":
                      "-p", "127.0.0.1:" + port_vnc + ":6080",
                      "--env", "RESOLUT=" + get_screen_resolution(),
                      "--env", "HOST_UID=" + uid,
-                     image, "startvnc.sh > /home/" + user + "/.log/vnc.log"])
+                     image, "startvnc.sh >> /home/" + user + "/.log/vnc.log"])
 
     wait_for_url = True
 
