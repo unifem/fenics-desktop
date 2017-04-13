@@ -14,6 +14,9 @@ USER root
 WORKDIR /tmp
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Install some required system tools and packages for X Windows
 # We install firefox and make --no-remote to be default
@@ -70,6 +73,7 @@ ADD conf/ $DOCKER_HOME/.config
 
 RUN mkdir -p $DOCKER_HOME/.vnc && \
     mkdir -p $DOCKER_HOME/.log && touch $DOCKER_HOME/.log/vnc.log && \
+    echo "export NO_AT_BRIDGE=1" >> /home/$DOCKER_USER/.bashrc && \
     chown -R $DOCKER_USER:$DOCKER_GROUP $DOCKER_HOME
 
 WORKDIR $DOCKER_HOME
