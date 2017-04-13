@@ -34,6 +34,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted 
         \
         xserver-xorg-video-dummy \
         lxde \
+        dbus-x11 \
         x11-xserver-utils \
         gnome-themes-standard \
         gtk2-engines-pixbuf \
