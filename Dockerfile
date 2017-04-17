@@ -16,7 +16,6 @@ WORKDIR /tmp
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install some required system tools and packages for X Windows
-# We install firefox and make --no-remote to be default
 # Install FreeCAD and Gmsh
 RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
     apt-get update && \
@@ -49,7 +48,6 @@ RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
 	freecad \
         gmsh \
         paraview && \
-    sed -i 's/MOZ_APP_NAME "\$@"/MOZ_APP_NAME --no-remote "\$@"/' /usr/bin/firefox && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pip2 install -U pip \
