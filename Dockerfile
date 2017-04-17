@@ -14,15 +14,11 @@ USER root
 WORKDIR /tmp
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
 
 # Install some required system tools and packages for X Windows
 # We install firefox and make --no-remote to be default
 # Install FreeCAD and Gmsh
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
-    add-apt-repository ppa:freecad-maintainers/freecad-stable && \
+RUN add-apt-repository ppa:freecad-maintainers/freecad-stable && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         openssh-server \
