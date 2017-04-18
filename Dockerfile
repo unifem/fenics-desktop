@@ -64,6 +64,10 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
 ADD image /
 ADD conf/ $DOCKER_HOME/.config
 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 RUN mkdir -p $DOCKER_HOME/.vnc && \
     mkdir -p $DOCKER_HOME/.ssh && \
     mkdir -p $DOCKER_HOME/.log && touch $DOCKER_HOME/.log/vnc.log && \
