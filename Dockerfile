@@ -65,6 +65,7 @@ ADD image /
 ADD conf/ $DOCKER_HOME/.config
 
 RUN mkdir -p $DOCKER_HOME/.vnc && \
+    mkdir -p $DOCKER_HOME/.ssh && \
     mkdir -p $DOCKER_HOME/.log && touch $DOCKER_HOME/.log/vnc.log && \
     echo "export NO_AT_BRIDGE=1" >> /home/$DOCKER_USER/.bashrc && \
     chown -R $DOCKER_USER:$DOCKER_GROUP $DOCKER_HOME
