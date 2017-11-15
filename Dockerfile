@@ -1,4 +1,5 @@
-# Builds a Docker image with Ubuntu 16.04, FEniCS, Python3 and Jupyter Notebook
+# Builds a Docker image with FEniCS and Sfepy for Python3 and Jupyter Notebook
+# based on Ubuntu 16.04 and LXDE desktop environment
 #
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
@@ -37,6 +38,7 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
         libmpfr-dev \
         \
         meld \
+        gfortran \
         libsuitesparse-dev && \
     apt-get clean && \
     pip3 install -U \
@@ -98,28 +100,28 @@ RUN FENICS_SRC_DIR=/tmp/src $DOCKER_HOME/bin/fenics-pull && \
     rm -rf /tmp/src && \
     rm -f $DOCKER_HOME/bin/fenics-*
 
-# Install fenics-tools (this will be removed later)
+# Install fenics-tools (this might be removed later)
 RUN cd /tmp && \
     git clone --depth 1 https://github.com/unifem/fenicstools.git && \
     cd fenicstools && \
     python3 setup.py install && \
     rm -rf /tmp/fenicstools
 
-# Install sfepy (pysarse and mayavi are not installed)
-RUN cd /tmp && \
-    pip3 install -U \
+# Install sfepy (without pysparse and mayavi are not installed)
+ARG SFEPY_VERSION=2017.3
+
+RUN pip3 install -U \
         cython \
         pyparsing \
         scikit-umfpack \
         tables \
-        pymetis && \
-    pip3 install https://bitbucket.org/dalcinl/igakit/get/default.tar.gz && \
-    git clone --depth 1 git://github.com/sfepy/sfepy.git && \
-    cd sfepy && \
-    python3 setup.py build && \
-    python3 setup.py install && \
-    cd /tmp && \
-    rm -rf /tmp/sfspy
+        pymetis \
+        pyamg \
+        pyface && \
+    pip3 install --no-cache-dir \
+        https://bitbucket.org/dalcinl/igakit/get/default.tar.gz && \
+    pip3 install --no-cache-dir \
+        https://github.com/sfepy/sfepy/archive/release_${SFEPY_VERSION}.tar.gz
 
 ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
 
