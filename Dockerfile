@@ -36,7 +36,8 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
         libcln-dev \
         libmpfr-dev \
         \
-        meld && \
+        meld \
+        libsuitesparse-dev && \
     apt-get clean && \
     pip3 install -U \
         numpy \
@@ -103,6 +104,22 @@ RUN cd /tmp && \
     cd fenicstools && \
     python3 setup.py install && \
     rm -rf /tmp/fenicstools
+
+# Install sfepy (pysarse and mayavi are not installed)
+RUN cd /tmp && \
+    pip3 install -U \
+        cython \
+        pyparsing \
+        scikit-umfpack \
+        tables \
+        pymetis && \
+    pip3 install https://bitbucket.org/dalcinl/igakit/get/default.tar.gz && \
+    git clone --depth 1 git://github.com/sfepy/sfepy.git && \
+    cd sfepy && \
+    python3 setup.py build && \
+    python3 setup.py install && \
+    cd /tmp && \
+    rm -rf /tmp/sfspy
 
 ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
 
