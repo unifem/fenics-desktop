@@ -37,9 +37,7 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
         libcln-dev \
         libmpfr-dev \
         \
-        meld \
-        gfortran \
-        libsuitesparse-dev && \
+        meld && \
     apt-get clean && \
     pip3 install -U \
         numpy \
@@ -106,22 +104,6 @@ RUN cd /tmp && \
     cd fenicstools && \
     python3 setup.py install && \
     rm -rf /tmp/fenicstools
-
-# Install sfepy (without pysparse and mayavi are not installed)
-ARG SFEPY_VERSION=2017.3
-
-RUN pip3 install -U \
-        cython \
-        pyparsing \
-        scikit-umfpack \
-        tables \
-        pymetis \
-        pyamg \
-        pyface && \
-    pip3 install --no-cache-dir \
-        https://bitbucket.org/dalcinl/igakit/get/default.tar.gz && \
-    pip3 install --no-cache-dir \
-        https://github.com/sfepy/sfepy/archive/release_${SFEPY_VERSION}.tar.gz
 
 ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
 
