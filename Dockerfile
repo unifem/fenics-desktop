@@ -1,5 +1,5 @@
-# Builds a Docker image with FEniCS and Sfepy for Python3 and Jupyter Notebook
-# based on Ubuntu and LXDE desktop environment
+# Builds a Docker image with FEniCS and fenicstools for Python3
+# based on spyder-desktop
 #
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
