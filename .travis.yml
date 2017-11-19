@@ -18,7 +18,8 @@ script:
         -n $(git log --since $(docker inspect $BASE | grep Created | perl -e "s/.+\"([\d-:T]+).+$/\$1/g" -p)) &&
         -z "$(git diff --name-only $TRAVIS_COMMIT_RANGE |
             grep -e Dockerfile -e .travis.yml -e image -e WELCOME)" ]] ||
-    (docker build --tag unifem/fenics-desktop:latest . &&
+    (docker build --tag unifem/fenics-desktop:2017.1.0
+                  --tag unifem/fenics-desktop:latest . &&
      docker push unifem/fenics-desktop &&
      touch success)'
   # Test startup scripts
