@@ -32,7 +32,8 @@ RUN apt-get update && \
         libhdf5-openmpi-dev \
         libgmp-dev \
         libcln-dev \
-        libmpfr-dev && \
+        libmpfr-dev \
+        libparmetis4.0 libmetis-dev libparmetis-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
