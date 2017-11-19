@@ -46,6 +46,11 @@ ENV FENICS_BUILD_TYPE=Release \
 
 ARG FENICS_SRC_DIR=/tmp/src
 
+# Disable testing of compilation of PETSC and SLEPC in cmake
+# cmake is broken in dolfin when using system installed PETSC and SLEPC
+ARG CMAKE_EXTRA_ARGS="-DPETSC_TEST_LIB_COMPILED=1 -DPETSC_TEST_LIB_EXITCODE=0 \
+                      -DSLEPC_TEST_LIB_COMPILED=1 -DSLEPC_TEST_LIB_EXITCODE=0"
+
 RUN $DOCKER_HOME/bin/fenics-pull && \
     $DOCKER_HOME/bin/fenics-build && \
     ldconfig && \
