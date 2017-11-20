@@ -3,11 +3,8 @@ Welcome to the Docker image for Ubuntu Desktop for FEniCS!
 This image is based on Ubuntu 17.10, with FEniCS 2017.1.0, SciPy and
 Spyder for Python 3.6.3, Jupyter Notebook, and g++-5.4 preinstalled.
 
-To explore FEniCS, checkout the demo programs in the '~/fenics-demo' directory.
-For example:
-
-    cd ~/fenics-demo/documented/poisson/python/
-    python3 demo_poisson.py
+To explore FEniCS, checkout the Jupyter notebooks at
+https://github.com/unifem/fenics-notes/
 
 Please save your code and data into the ~/shared or ~/project directories.
 The former maps to the current work directory on your computer. The latter
