@@ -74,9 +74,7 @@ ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
 USER $DOCKER_USER
 ENV GIT_EDITOR=vi EDITOR=vi
 RUN echo 'export OMP_NUM_THREADS=$(nproc)' >> $DOCKER_HOME/.profile && \
-    echo "PATH=$DOCKER_HOME/bin:$PATH" >> $DOCKER_HOME/.profile && \
-    echo "alias python=python3" >> $DOCKER_HOME/.profile && \
-    echo "alias ipython=ipython3" >> $DOCKER_HOME/.profile
+    echo "PATH=$DOCKER_HOME/bin:$PATH" >> $DOCKER_HOME/.profile
 
 WORKDIR $DOCKER_HOME
 USER root
