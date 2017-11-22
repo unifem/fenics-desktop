@@ -4,7 +4,7 @@
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
 
-# Use PETSc prebuilt in fastsolve/desktop
+# Use PETSc prebuilt in compdatasci/petsc-desktop
 FROM compdatasci/spyder-desktop:latest
 LABEL maintainer "Xiangmin Jiao <xmjiao@gmail.com>"
 
