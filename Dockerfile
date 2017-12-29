@@ -1,4 +1,4 @@
-# Builds a Docker image with FEniCS and fenicstools for Python3
+# Builds a Docker image for FEniCS (with fenicstools and sfepy) for Python3
 # based on spyder-desktop
 #
 # Authors:
@@ -66,6 +66,23 @@ RUN cd /tmp && \
     rm -rf /tmp/fenicstools
 
 ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
+
+# Install sfepy (without pysparse and mayavi)
+ARG SFEPY_VERSION=2017.3
+
+RUN pip3 install -U \
+        cython \
+        pyparsing \
+        scikit-umfpack \
+        tables \
+        pymetis \
+        pyamg \
+        pyface && \
+    pip3 install --no-cache-dir \
+        https://bitbucket.org/dalcinl/igakit/get/default.tar.gz && \
+    pip3 install --no-cache-dir \
+        https://github.com/sfepy/sfepy/archive/release_${SFEPY_VERSION}.tar.gz
+
 
 ########################################################
 # Customization for user
