@@ -5,7 +5,7 @@ services: docker
 
 env:
   global:
-    - BASE=compdatasci/octave-desktop:latest
+    - BASE=compdatasci/spyder-desktop:latest
 
 before_script:
   - docker --version
