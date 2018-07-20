@@ -19,6 +19,8 @@ RUN apt-get update && \
         libnss3 \
         imagemagick \
         \
+        python3-petsc4py \
+        python3-slepc4py \
         libboost-filesystem-dev \
         libboost-iostreams-dev \
         libboost-math-dev \
