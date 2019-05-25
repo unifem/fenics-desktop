@@ -77,6 +77,7 @@ RUN pip3 install -U \
         pyparsing \
         scikit-umfpack \
         tables \
+        pybind11 \
         pymetis \
         pyamg \
         pyface && \
