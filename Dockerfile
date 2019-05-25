@@ -72,14 +72,13 @@ RUN cd /tmp && \
 ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
 
 # Install sfepy (without pysparse and mayavi)
-ARG SFEPY_VERSION=2017.3
+ARG SFEPY_VERSION=2019.1.1
 
 RUN pip3 install -U \
         cython \
         pyparsing \
         scikit-umfpack \
         tables \
-        pymetis \
         pyamg \
         pyface && \
     pip3 install --no-cache-dir \
