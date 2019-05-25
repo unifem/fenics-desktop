@@ -21,6 +21,8 @@ RUN apt-get update && \
         \
         python3-petsc4py \
         python3-slepc4py \
+        python3-pybind11 \
+        pybind11-dev \
         libboost-filesystem-dev \
         libboost-iostreams-dev \
         libboost-math-dev \
@@ -77,7 +79,6 @@ RUN pip3 install -U \
         pyparsing \
         scikit-umfpack \
         tables \
-        pybind11 \
         pymetis \
         pyamg \
         pyface && \
