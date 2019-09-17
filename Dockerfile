@@ -82,7 +82,7 @@ RUN pip3 install -U \
         pyamg \
         pyface && \
     pip3 install --no-cache-dir \
-        https://bitbucket.org/dalcinl/igakit/get/default.tar.gz && \
+        https://bitbucket.org/dalcinl/igakit/get/master.tar.gz && \
     pip3 install --no-cache-dir \
         https://github.com/sfepy/sfepy/archive/release_${SFEPY_VERSION}.tar.gz
 
