@@ -46,7 +46,7 @@ ADD image/home $DOCKER_HOME
 # Build FEniCS with Python3
 ENV FENICS_BUILD_TYPE=Release \
     FENICS_PREFIX=/usr/local \
-    FENICS_VERSION=2017.1.0 \
+    FENICS_VERSION=2019.1.0 \
     FENICS_PYTHON=python3
 
 ARG FENICS_SRC_DIR=/tmp/src
