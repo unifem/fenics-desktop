@@ -36,8 +36,10 @@ function pull () {
 if [ -z "$1" ]; then
     if [ "${FENICS_VERSION}" == "1.6.0" ]; then
         pull fiat instant ufl ffc dolfin
-    else
+    elif [ "${FENICS_VERSION}" == "2017.1.0" ]; then
         pull fiat dijitso instant ufl ffc dolfin mshr
+    else
+        pull fiat dijitso ufl ffc dolfin mshr
     fi
 else
     pull $@
