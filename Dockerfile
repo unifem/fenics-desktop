@@ -39,8 +39,7 @@ RUN add-apt-repository ppa:fenics-packages/fenics && \
         libcln-dev \
         libmpfr-dev \
         libparmetis4.0 libmetis-dev libparmetis-dev \
-        fenics \
-        mshr && \
+        fenics && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
