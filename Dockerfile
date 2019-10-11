@@ -37,9 +37,7 @@ RUN apt-get update && \
         libgmp-dev \
         libcln-dev \
         libmpfr-dev \
-        libparmetis4.0 libmetis-dev libparmetis-dev \
-        pybind11 \
-        pybind11-dev && \
+        libparmetis4.0 libmetis-dev libparmetis-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
