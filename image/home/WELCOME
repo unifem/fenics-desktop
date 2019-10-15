@@ -1,6 +1,6 @@
 Welcome to the Docker image for Ubuntu Desktop for FEniCS!
 
-This image is based on Ubuntu 18.04, with FEniCS 2019.1.0, SciPy and
+This image is based on Ubuntu 17.10, with FEniCS 2017.1.0, SciPy and
 Spyder for Python 3.6.3, Jupyter Notebook, and g++-5.4 preinstalled.
 
 To explore FEniCS, checkout the Jupyter notebooks at
