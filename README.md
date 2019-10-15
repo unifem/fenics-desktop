@@ -1,7 +1,7 @@
 # Docker Image for FEniCS Desktop
 This Docker image provides the Ubuntu Desktop environment for FEniCS.
 
-This image runs the lightweight LXDE Windows Manager, and has FEniCS 17.1.0, Python 3.5.2 (with NumPy, SciPy, Pandas and Spyder), Jupyter Notebook, and g++-5.4 preinstalled. The X Windows will display in your web browser in full-screen mode. You can use this Docker image on 64-bit Linux, Mac or Windows.
+This image runs the lightweight LXDE Windows Manager, and has FEniCS 19.1.0, Python 3.6.8 (with NumPy, SciPy, Pandas and Spyder), Jupyter Notebook, and g++-7.4 preinstalled. The X Windows will display in your web browser in full-screen mode. You can use this Docker image on 64-bit Linux, Mac or Windows.
 
 [![Build Status](https://travis-ci.org/unifem/fenics-desktop.svg?branch=master)](https://travis-ci.org/unifem/fenics-desktop) [![](https://images.microbadger.com/badges/image/unifem/fenics-desktop.svg)](https://microbadger.com/images/unifem/fenics-desktop)
 
