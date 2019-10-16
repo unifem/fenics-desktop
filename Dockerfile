@@ -1,4 +1,4 @@
-# Builds a Docker image for FEniCS and sfepy for Python3
+# Builds a Docker image for FEniCS for Python3
 # based on spyder-desktop
 #
 # Authors:
@@ -12,7 +12,8 @@ USER root
 WORKDIR /tmp
 
 # Install system packages
-RUN apt-get update && \
+RUN add-apt-repository ppa:fenics-packages/fenics && \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         git \
         git-lfs \
@@ -37,48 +38,12 @@ RUN apt-get update && \
         libgmp-dev \
         libcln-dev \
         libmpfr-dev \
-        libparmetis4.0 libmetis-dev libparmetis-dev && \
+        libparmetis4.0 libmetis-dev libparmetis-dev \
+        fenics && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
 ADD image/home $DOCKER_HOME
-
-# Build FEniCS with Python3
-ENV FENICS_BUILD_TYPE=Release \
-    FENICS_PREFIX=/usr/local \
-    FENICS_VERSION=2019.1.0 \
-    FENICS_PYTHON=python3
-
-ARG FENICS_SRC_DIR=/tmp/src
-
-# Disable testing of compilation of PETSC and SLEPC in cmake
-# cmake is broken in dolfin when using system installed PETSC and SLEPC
-ARG CMAKE_EXTRA_ARGS="-DPETSC_TEST_LIB_COMPILED=1 -DPETSC_TEST_LIB_EXITCODE=0 \
-                      -DSLEPC_TEST_LIB_COMPILED=1 -DSLEPC_TEST_LIB_EXITCODE=0"
-
-RUN $DOCKER_HOME/bin/fenics-pull && \
-    $DOCKER_HOME/bin/fenics-build && \
-    ldconfig && \
-    rm -rf /tmp/src && \
-    rm -f $DOCKER_HOME/bin/fenics-*
-
-ENV PYTHONPATH=$FENICS_PREFIX/lib/python3/dist-packages:$PYTHONPATH
-
-# Install sfepy (without pysparse and mayavi)
-ARG SFEPY_VERSION=2019.1.1
-
-RUN pip3 install -U \
-        cython \
-        pyparsing \
-        scikit-umfpack \
-        tables \
-        pyamg \
-        pyface && \
-    pip3 install --no-cache-dir \
-        https://bitbucket.org/dalcinl/igakit/get/master.tar.gz && \
-    pip3 install --no-cache-dir \
-        https://github.com/sfepy/sfepy/archive/release_${SFEPY_VERSION}.tar.gz
-
 
 ########################################################
 # Customization for user
